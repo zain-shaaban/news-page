@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesla News</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleleapis.com/css2?family=Source+Sans+Pro&display=swap">
+</head>
+<body>
+    <header class="header">
+        <div class="header__logo">Tesla News</div>
+        <%- include("./partials/search.ejs") %>
+    </header>
+
+    <div class="wrapper">
+        <div class="news">
+            <% if (articles) { %>
+                <% articles.forEach(article => { %>
+                    <% if (article.title!=="[Removed]"&&article.description&&article.urlToImage!=null) { %>
+                    <a href="/article/<%= article.id-1 %>" class="news__card">
+                        <img src="<%= article.urlToImage %>" alt="<%- article.title %>">
+                        <h3><%- article.title %></h3>
+                        <!-- <p><%- article.description %></p> -->
+                    </a>
+                    <% } %>
+                <% }) %>
+            <% } else { %>
+                <h2>No posts available now</h2>
+             <% } %>
+        </div>
+    </div>
+</body>
+</html>

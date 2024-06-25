@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesla News</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleleapis.com/css2?family=Source+Sans+Pro&display=swap">
+</head>
+<body>
+    <header class="header">
+        <div class="header__logo">Tesla News</div>
+        <%- include("./partials/search.ejs") %>
+    </header>
+
+    <div class="wrapper">
+        <div class="news-single">
+            <a href="/" style="background-color:yellow;">&larr; Back</a>
+            <br>
+            <br>
+            <br>
+            <% if (article!=null) { %>
+                <img src="<%= article.urlToImage %>" alt="Image Deleted" width="1000" height="400">
+                <h2><%- article.title %></h2>
+                <article><%- article.description %></article>
+                <br>
+                <a href="<%= article.url %>"><button aria-setsize="10px" style="color:white; background-color:darkslategrey; width: 100px; height: 40px;">Read More</button></a>
+                <h5>Published At <%= article.publishedAt %></h5>
+            <% } else {%>
+                <h2>This Post Has Deleted</h2>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>
